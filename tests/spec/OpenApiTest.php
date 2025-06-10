@@ -149,6 +149,11 @@ class OpenApiTest extends \PHPUnit\Framework\TestCase
 
         // examples from https://github.com/APIs-guru/openapi-directory/tree/openapi3.0.0/APIs
         $apisGuruExamples = [];
+
+        $localExamples = [
+            __DIR__ . '/data/const.json',
+        ];
+
         /** @var $it RecursiveDirectoryIterator|RecursiveIteratorIterator */
         $it = new RecursiveIteratorIterator(new RecursiveDirectoryIterator(__DIR__ . '/../../vendor/apis-guru/openapi-directory/APIs'));
         $it->rewind();
@@ -177,7 +182,8 @@ class OpenApiTest extends \PHPUnit\Framework\TestCase
             $oaiExamples,
             $mermadeExamples,
             $apisGuruExamples,
-            $nexmoExamples
+            $nexmoExamples,
+            $localExamples
         );
         foreach($all as $path) {
             yield $path => [

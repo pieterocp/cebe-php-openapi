@@ -335,6 +335,7 @@ JSON;
             'maxProperties' => null,
             'minProperties' => null,
             'required' => null, // if set, it should not be an empty array, according to the spec
+            'const' => null,
             'enum' => null, // if it is an array, it means restriction of values
             // The following properties are taken from the JSON Schema definition but their definitions were adjusted to the OpenAPI Specification.
             'type' => null,

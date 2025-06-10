@@ -41,12 +41,12 @@ install: composer.lock yarn.lock
 	$(DOCKER_PHP) composer install --prefer-dist --no-interaction --no-progress --ansi
 	$(DOCKER_NODE) yarn install
 
-test: unit test-recursion.json test-recursion2.yaml test-recursion3_index.yaml test-empty-maps.json
+test: unit test-recursion.json test-recursion2.yaml test-recursion3_index.yaml test-empty-maps.json const.json
 
 unit:
 	$(DOCKER_PHP) php $(PHPARGS) $(XPHPARGS) vendor/bin/phpunit --verbose --colors=always $(TESTCASE)
 
-test-debug: unit-debug test-recursion.json test-recursion2.yaml test-recursion3_index.yaml test-empty-maps.json
+test-debug: unit-debug test-recursion.json test-recursion2.yaml test-recursion3_index.yaml test-empty-maps.json const.json
 
 unit-debug:
 	$(DOCKER_PHP) php $(PHPARGS) $(XPHPARGS) vendor/bin/phpunit --debug --testdox --colors=always -c phpunit11.xml.dist $(TESTCASE)
@@ -61,6 +61,7 @@ lint: install
 	$(DOCKER_PHP) php $(PHPARGS) $(XPHPARGS) bin/php-openapi validate tests/spec/data/recursion.json
 	$(DOCKER_PHP) php $(PHPARGS) $(XPHPARGS) bin/php-openapi validate tests/spec/data/recursion2.yaml
 	$(DOCKER_PHP) php $(PHPARGS) $(XPHPARGS) bin/php-openapi validate tests/spec/data/empty-maps.json
+	$(DOCKER_PHP) php $(PHPARGS) $(XPHPARGS) bin/php-openapi validate tests/spec/data/const.json
 	$(DOCKER_NODE) yarn run speccy lint tests/spec/data/reference/playlist.json
 	$(DOCKER_NODE) yarn run speccy lint tests/spec/data/recursion.json
 

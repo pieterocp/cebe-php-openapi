@@ -39,6 +39,7 @@ use cebe\openapi\SpecBaseObject;
  * @property int $minProperties
  * @property string[] $required list of required properties
  * @property array $enum
+ * @property mixed $const
  *
  * @property string|string[] $type type can only be `string` in OpenAPI 3.0, but can be an array of strings since OpenAPI 3.1
  * @property Schema[]|Reference[] $allOf
@@ -88,6 +89,8 @@ class Schema extends SpecBaseObject
             'minProperties' => Type::INTEGER,
             'required' => [Type::STRING],
             'enum' => [Type::ANY],
+            // Added in 3.1: https://datatracker.ietf.org/doc/html/draft-bhutton-json-schema-validation-01#name-const
+            'const' => Type::ANY,
             // The following properties are taken from the JSON Schema definition but their definitions were adjusted to the OpenAPI Specification.
             'type' => Type::STRING,
             'allOf' => [Schema::class],
@@ -121,6 +124,7 @@ class Schema extends SpecBaseObject
             'additionalProperties' => true,
             'required' => null,
             'enum' => null,
+            'const' => null,
             'allOf' => null,
             'oneOf' => null,
             'anyOf' => null,

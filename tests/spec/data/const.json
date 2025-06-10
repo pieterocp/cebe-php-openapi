@@ -1,0 +1,35 @@
+{
+  "openapi": "3.1.0",
+  "info": {
+    "title": "test",
+    "version": "1.0",
+    "contact": {
+      "email": "somebody@example.com"
+    }
+  },
+  "components": {
+    "schemas": {
+      "Product": {
+        "title": "Product",
+        "description": "A product.",
+        "type": "object",
+        "properties": {
+          "color": {
+            "oneOf": [
+              {
+                "const": "RGB",
+                "title": "Red, Green, Blue",
+                "description": "Specify colors with the red, green, and blue additive color model"
+              },
+              {
+                "const": "CMYK",
+                "title": "Cyan, Magenta, Yellow, Black",
+                "description": "Specify colors with the cyan, magenta, yellow, and black subtractive color model"
+              }
+            ]
+          }
+        }
+      }
+    }
+  }
+}
