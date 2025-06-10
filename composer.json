@@ -77,7 +77,7 @@
 				"source": {
 					"url": "https://github.com/OAI/OpenAPI-Specification",
 					"type": "git",
-					"reference": "v3.1.1-dev"
+					"reference": "3.1.1"
 				}
 			}
 		},
