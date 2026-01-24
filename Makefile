@@ -46,7 +46,7 @@ test: unit test-recursion.json test-recursion2.yaml test-recursion3_index.yaml t
 unit:
 	$(DOCKER_PHP) php $(PHPARGS) $(XPHPARGS) vendor/bin/phpunit --verbose --colors=always $(TESTCASE)
 
-test-debug: unit-debug test-recursion.json test-recursion2.yaml test-recursion3_index.yaml test-empty-maps.json const.json
+test-debug: unit-debug test-recursion.json test-recursion2.yaml test-recursion3_index.yaml test-empty-maps.json test-const.json
 
 unit-debug:
 	$(DOCKER_PHP) php $(PHPARGS) $(XPHPARGS) vendor/bin/phpunit --debug --testdox --colors=always -c phpunit11.xml.dist $(TESTCASE)
