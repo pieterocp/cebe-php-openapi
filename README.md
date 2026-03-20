@@ -1,4 +1,4 @@
-## Atention
+## Attention
 This is a fork of [cebe/php-openapi](https://github.com/cebe/php-openapi). I created it as library because the pull request
 of the openapi3.1 was taking years and a lot of developers want to use it.
 
@@ -12,6 +12,7 @@ Supported OpenAPI versions:
 
 - 3.0.x
 - 3.1.x
+- 3.2.x
 
 [![Latest Stable Version](https://poser.pugx.org/devizzent/cebe-php-openapi/v/stable)](https://packagist.org/packages/devizzent/cebe-php-openapi)
 [![Total Downloads](https://poser.pugx.org/devizzent/cebe-php-openapi/downloads)](https://packagist.org/packages/devizzent/cebe-php-openapi)

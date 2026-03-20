@@ -30,6 +30,7 @@ class OpenApi extends SpecBaseObject
 {
     const VERSION_3_0 = '3.0';
     const VERSION_3_1 = '3.1';
+    const VERSION_3_2 = '3.2';
     const VERSION_UNSUPPORTED = 'unsupported';
 
     /**
@@ -87,6 +88,8 @@ class OpenApi extends SpecBaseObject
     {
         if ($this->getMajorVersion() === static::VERSION_3_0) {
             $this->requireProperties(['openapi', 'info', 'paths']);
+        } elseif ($this->getMajorVersion() === static::VERSION_3_1) {
+            $this->requireProperties(['openapi', 'info'], ['paths', 'webhooks', 'components']);
         } else {
             $this->requireProperties(['openapi', 'info'], ['paths', 'webhooks', 'components']);
         }
@@ -116,6 +119,8 @@ class OpenApi extends SpecBaseObject
                     return static::VERSION_3_0;
                 case '3.1':
                     return static::VERSION_3_1;
+                case '3.2':
+                    return static::VERSION_3_2;
             }
         }
 

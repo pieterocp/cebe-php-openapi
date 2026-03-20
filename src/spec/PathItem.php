@@ -23,6 +23,7 @@ use cebe\openapi\json\JsonPointer;
  * @property string $summary
  * @property string $description
  * @property Operation|null $get
+ * @property Operation|null $query
  * @property Operation|null $put
  * @property Operation|null $post
  * @property Operation|null $delete
@@ -58,6 +59,7 @@ class PathItem extends SpecBaseObject
             'head' => Operation::class,
             'patch' => Operation::class,
             'trace' => Operation::class,
+            'query' => Operation::class,
             'servers' => [Server::class],
             'parameters' => [Parameter::class],
         ];
