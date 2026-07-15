@@ -16,6 +16,16 @@ class WriterTest extends \PHPUnit\Framework\TestCase
         ], $merge));
     }
 
+    /**
+     * Normalize YAML output to account for Symfony 8 removing whitespace in empty braces.
+     * Symfony 8 changed how it formats empty objects in YAML, so we normalize both
+     * expected and actual output to handle both formats consistently.
+     */
+    private function normalize($str)
+    {
+        return preg_replace('~\{[\s]+\}~', '{}', $str);
+    }
+
     public function testWriteJson()
     {
         $openapi = $this->createOpenAPI();
@@ -72,8 +82,8 @@ JSON
 
         $yaml = \cebe\openapi\Writer::writeToYaml($openapi);
 
-
-        $this->assertEquals(preg_replace('~\R~', "\n", <<<YAML
+        $this->assertEquals(
+            $this->normalize(preg_replace('~\R~', "\n", <<<YAML
 openapi: 3.0.0
 info:
   title: 'Test API'
@@ -81,8 +91,8 @@ info:
 paths: {  }
 
 YAML
-        ),
-            $yaml
+        )),
+            $this->normalize($yaml)
         );
     }
 
@@ -119,8 +129,8 @@ JSON
 
         $yaml = \cebe\openapi\Writer::writeToYaml($openapi);
 
-
-        $this->assertEquals(preg_replace('~\R~', "\n", <<<YAML
+        $this->assertEquals(
+            $this->normalize(preg_replace('~\R~', "\n", <<<YAML
 openapi: 3.0.0
 info:
   title: 'Test API'
@@ -129,8 +139,8 @@ paths: {  }
 security: []
 
 YAML
-        ),
-            $yaml
+        )),
+            $this->normalize($yaml)
         );
     }
 
@@ -171,8 +181,8 @@ JSON
 
         $yaml = \cebe\openapi\Writer::writeToYaml($openapi);
 
-
-        $this->assertEquals(preg_replace('~\R~', "\n", <<<YAML
+        $this->assertEquals(
+            $this->normalize(preg_replace('~\R~', "\n", <<<YAML
 openapi: 3.0.0
 info:
   title: 'Test API'
@@ -183,8 +193,8 @@ security:
     Bearer: []
 
 YAML
-        ),
-            $yaml
+        )),
+            $this->normalize($yaml)
         );
     }
 }
