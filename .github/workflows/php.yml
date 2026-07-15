@@ -22,6 +22,7 @@ jobs:
           - "8.1"
           - "8.3"
           - "8.4"
+          - "8.5"
         dependencies:
           - "lowest"
           - "highest"
@@ -87,11 +88,15 @@ jobs:
             symfony-yaml: '^3.4'
           - php: '8.4'
             symfony-yaml: '^3.4'
+          - php: '8.5'
+            symfony-yaml: '^3.4'
 
     runs-on: ${{ matrix.os }}
 
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v7
+        with:
+          persist-credentials: false
 
       - name: Install PHP
         uses: shivammathur/setup-php@v2
@@ -112,7 +117,7 @@ jobs:
         if: matrix.php >= '8.3'
 
       - name: "Install dependencies with Composer"
-        uses: "ramsey/composer-install@v2"
+        uses: "ramsey/composer-install@v4"
         with:
           dependency-versions: "${{ matrix.dependencies }}"
 
