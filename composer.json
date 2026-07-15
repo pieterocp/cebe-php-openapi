@@ -30,9 +30,7 @@
 	"require-dev": {
 		"cebe/indent": "*",
 		"phpunit/phpunit": "^6.5 || ^7.5 || ^8.5 || ^9.4 || ^11.4",
-
 		"oai/openapi-specification-3.0": "3.0.3",
-
 		"mermade/openapi3-examples": "1.0.0",
 		"apis-guru/openapi-directory": "1.0.0",
 		"phpstan/phpstan": "^0.12.0"
@@ -56,6 +54,23 @@
 	"bin": [
 		"bin/php-openapi"
 	],
+	"config": {
+		"policy": {
+			"advisories": {
+				"ignore-id": {
+					"PKSA-v5yj-8nmz-sk2q": {
+						"reason": "this is so that ci for older php versions can run, do NOT use 3.x/4.x in production"
+					},
+					"PKSA-ft77-7h5f-p3r6": {
+						"reason": "this is so that ci for older php versions can run, do NOT use 3.x/4.x in production"
+					},
+					"PKSA-b14r-zh1d-vdrc": {
+						"reason": "this is so that ci for older php versions can run, do NOT use 3.x/4.x in production"
+					}
+				}
+			}
+		}
+	},
 	"repositories": [
 		{
 			"type": "package",
